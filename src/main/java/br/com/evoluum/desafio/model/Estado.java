@@ -12,4 +12,8 @@ public class Estado {
     private String nome;
     private String id;
     private Regiao regiao;
+	
+    public String getNomeFormatado() {
+		return new StringBuilder().append(nome).append("/").append(sigla).toString();
+	}
 }

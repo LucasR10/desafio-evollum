@@ -19,7 +19,7 @@ public class ErrorResponse {
 	private final List<ApiError> erros;
 	
 	static ErrorResponse of( HttpStatus status, List<ApiError> errors ) {
-		return new ErrorResponse(status.value(), erros);
+		return new ErrorResponse(status.value(), errors);
 		
 	}
 	
