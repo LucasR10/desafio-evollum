@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @JsonAutoDetect(fieldVisibility = ANY )
