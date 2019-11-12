@@ -32,15 +32,15 @@ public class EstadoResource {
 	
 	@GetMapping 
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<Estado>  get() throws Exception{
+	public List<Estado>  getJson() throws Exception{
 	   return estadoService.getAll();
 	}
 	
 	@RequestMapping(value = "/csv", method = RequestMethod.GET, produces = "text/csv")
 	public @ResponseBody void exportMailIdCsv(HttpServletResponse response) throws Exception {
-	    List<Estado> eblnotif_list = estadoService.getAll();
 	    ExportarEstadoCSV exporta = new ExportarEstadoCSV();
-	    download.download(exporta.getBytes(), "teste");
+	    exporta.dados( estadoService.getAll() );
+	   // download.download( exporta.getBytes(), "teste.csv") ;
 	    
 	}
 
