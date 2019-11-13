@@ -15,11 +15,11 @@ public class EstadoService {
 	private EndpointProvider provider;
 	
 		public List<Estado> getAll() throws Exception {
-			return provider.getAll();
+			return provider.getEstados();
 		}
 		
 		public String getIdPorNomeCidade(final String nome) throws Exception {
-			for (Estado es : provider.getAll()) {
+			for (Estado es : getAll() ) {
 				 if( es.getNome().equals(nome) ) return es.getId(); 
 			}
 			return "Cidade Não localizada" ;

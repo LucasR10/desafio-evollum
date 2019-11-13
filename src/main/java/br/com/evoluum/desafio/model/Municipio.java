@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 public class Municipio {
- 
+
+private String id;
+private String nome;
 private Microrregiao microrregiao;
-private Mesorregiao mesorregiao;
-private UF uf;
-private Regiao regiao;
+
 }

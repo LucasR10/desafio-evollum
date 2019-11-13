@@ -14,36 +14,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.evoluum.desafio.exportar.ExportarCSVEstado;
-import br.com.evoluum.desafio.model.Estado;
+import br.com.evoluum.desafio.exportar.ExportarCSVMunicipio;
+import br.com.evoluum.desafio.model.Municipio;
 import br.com.evoluum.desafio.service.DownloadService;
-import br.com.evoluum.desafio.service.EstadoService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import br.com.evoluum.desafio.service.MunicipioService;
 
 @RestController
-@RequestMapping(value ="/estados")
-@Api(value = "Estados")
-public class EstadoResource {
+@RequestMapping(value ="/municipios")
+public class MunicipioResource {
 
 	@Autowired
-	private EstadoService estadoService;
+	private MunicipioService municipioService;
 	
 	@Autowired
 	private DownloadService downloadService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseStatus(code = HttpStatus.OK )
-	@ApiOperation(value = "Retorna un json com o conjunto de Unidades da Federação do Brasil")
-	public ResponseEntity<List<Estado>> exportarJson() throws Exception{
-	   return  ResponseEntity.ok( estadoService.getAll() );
+	public ResponseEntity<List<Municipio>> exportarJson() throws Exception{
+	   return  ResponseEntity.ok( municipioService.getAll() );
 	}
 	
 	@RequestMapping(value = "/csv", method = RequestMethod.GET, produces = "text/csv")
 	@ResponseStatus(code = HttpStatus.OK )
-	@ApiOperation(value = "Retorna un csv com o conjunto de Unidades da Federação do Brasil")
 	public @ResponseBody void exportarCsv (HttpServletResponse response) throws Exception {
-	    downloadService.download( new ExportarCSVEstado().addDados(estadoService.getAll())) ;
+	    downloadService.download(new ExportarCSVMunicipio().addDados(municipioService.getAll())) ;
 	}
 
 
